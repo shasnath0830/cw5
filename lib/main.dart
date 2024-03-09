@@ -1,26 +1,19 @@
+// main.dart file
 import 'package:flutter/material.dart';
-import 'package:flame/game.dart';
-import 'package:flame/components.dart'; // Import the components library
+import 'rocket_selection_screen.dart'; // Make sure to import this
 
 void main() {
-  runApp(GameWidget(game: RocketRacingGame()));
+  runApp(const MyApp());
 }
 
-class RocketRacingGame extends FlameGame {
-  late final SpriteComponent background;
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
-  Future<void> onLoad() async {
-    // Call the super method to make sure all Flame components are properly initialized
-    await super.onLoad();
-    // Load the background sprite using the 'loadSprite' method
-    final sprite = await loadSprite('background.png');
-    // Instantiate your background as a SpriteComponent
-    background = SpriteComponent(sprite: sprite, size: size);
-    // Ensure the background covers the entire screen
-    background.size = size;
-
-    // Add the background as a component to the game
-    add(background);
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      title: 'Rocket Racing Game',
+      home: RocketSelectionScreen(), // Start with the selection screen
+    );
   }
 }
