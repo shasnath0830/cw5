@@ -8,12 +8,15 @@ class RocketSelectionScreen extends StatefulWidget {
   const RocketSelectionScreen({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _RocketSelectionScreenState createState() => _RocketSelectionScreenState();
 }
 
 class _RocketSelectionScreenState extends State<RocketSelectionScreen> {
   Rocket? selectedRocket;
+  double rocketX = 0; // Initial X position of the rocket
+  double rocketY = 0; // Initial Y position of the rocket
+  double rocketSize = 50; // Size of the rocket
+  bool gameStarted = false; // Set this to true when the game starts
 
   // Define a list of available rockets
   final List<Rocket> rockets = [
@@ -34,7 +37,8 @@ class _RocketSelectionScreenState extends State<RocketSelectionScreen> {
           final rocket = rockets[index];
           return ListTile(
             title: Text(rocket.name),
-            leading: Image.asset(rocket.spritePath), // This assumes you have these images in your assets
+            leading: Image.asset(rocket
+                .spritePath), // This assumes you have these images in your assets
             onTap: () {
               setState(() {
                 selectedRocket = rocket;

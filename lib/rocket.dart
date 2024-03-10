@@ -1,4 +1,4 @@
-// file: rocket.dart
+// rocket.dart
 class Rocket {
   final String name;
   final String spritePath;
